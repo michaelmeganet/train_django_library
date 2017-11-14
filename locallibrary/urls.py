@@ -20,8 +20,15 @@ defines the site url-to-view mappings. While this could contain all the url mapp
 from django.conf.urls import url
 from django.contrib import admin
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+]
+# Use include() to add URLS from the catalog application and authentication system
+from django.conf.urls import include
+
+urlpatterns += [
+    url(r'^catalog/', include('catalog.urls')),
 ]
 
 #Add URL maps to redirect the base URL to our application
